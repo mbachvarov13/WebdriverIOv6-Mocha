@@ -42,6 +42,7 @@ describe("This is how we can use requests in our scripts", () => {
   it("Use sync-request", () => {
     let res = request("GET", "https://jsonplaceholder.typicode.com/users");
     console.log("response body is", res.getBody("utf-8"));
+    console.log("aaaaaaaaaaa", res);
     //Deserialize response
     let responseData = JSON.parse(res.getBody("utf-8"));
     console.log("Response:", responseData);
