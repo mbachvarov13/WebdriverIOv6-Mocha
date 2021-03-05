@@ -1,31 +1,32 @@
-class ContactUsPage{
+import browserCapabilities from "../config/browserCapabilities";
 
-    get subjectHeadingDropdown(){ return $("//span[text()='-- Choose --']");}
-    get emailAddressInput(){ return $("#email");}
-    get messageInput(){ return $("#message");}
-    get submitBtn(){ return $('#submitMessage');}
+class ContactUsPage {
 
-    selectHeadingOption(option){ return $("//option[contains(text(),'"+option+"')]");}
+    get subjectHeadingDropdown() { return $("#id_contact"); }
+    get emailAddressInput() { return $("#email"); }
+    get messageInput() { return $("#message"); }
+    get submitBtn() { return $('#submitMessage'); }
 
-    selectSubject(option){
-        this.selectHeadingOption.waitForVisible();
-        this.subjectHeadingDropdown.click();
-        this.selectHeadingOption(option).click();
+    selectSubject(option) {
+        this.subjectHeadingDropdown.selectByVisibleText(option);
+        browser.pause(5000);
     };
 
-    enterEmail(email){
+    enterEmail(email) {
         this.emailAddressInput.setValue(email);
     };
 
-    enterMessage(message){
+    enterMessage(message) {
         this.messageInput.setValue(message);
     };
 
-    submitEmail(){
+    submitEmail() {
         this.submitBtn.click();
     };
 
-    
+    isEmailIsSent() {
+        return webElement.isVisible();
+    }
 }
 
 export default new ContactUsPage();

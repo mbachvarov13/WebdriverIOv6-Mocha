@@ -1,5 +1,5 @@
-class Helpers{
-    clickOnElement(webElement){
+class Helpers {
+    clickOnElement(webElement) {
         webElement.click();
     }
 }

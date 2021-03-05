@@ -1,7 +1,7 @@
 //For debug mode use: set DEBUG=true&&npm test
 //and add browser.debug()
 let DEFAULT_TIMEOUT = process.env.DEBUG ? 900000 : 10000;
-console.log("Default timeout is",DEFAULT_TIMEOUT);
+console.log("Default timeout is", DEFAULT_TIMEOUT);
 
 exports.config = {
   //
@@ -170,9 +170,9 @@ exports.config = {
    * @param {Object}         browser      instance of created browser/device session
    */
   before: function (capabilities, specs) {
-      //Add a custom browser command
-    browser.addCommand("customCommand", function(){
-        return "This is a Custom Command !";
+    //Add a custom browser command
+    browser.addCommand("customCommand", function () {
+      return "This is a Custom Command !";
     });
   },
   /**
