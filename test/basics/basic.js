@@ -1,9 +1,7 @@
 import { expect } from "chai";
-import { format } from "path";
+import { CUSTOMER_SERVICE, EMAIL_ADDRESS, SUPPORT_MESSAGE } from "../helpers/Constants";
 import ContactUsPage from "../pageObjects/ContactUsPage";
 import HomePage from "../pageObjects/HomePage";
-import { CUSTOMER_SERVICE, EMAIL_ADDRESS, SUPPORT_MESSAGE } from "../helpers/Constants";
-import browserCapabilities from "../config/browserCapabilities";
 const request = require("sync-request");
 const assert = require("assert");
 
@@ -66,8 +64,6 @@ describe("I should be able to open Contact us page", () => {
     ContactUsPage.enterEmail(EMAIL_ADDRESS);
     ContactUsPage.enterMessage(SUPPORT_MESSAGE);
     ContactUsPage.submitEmail();
-    //To Do asserts
-    browser.pause(5000);
-    expect(ContactUsPage.isEmailIsSent(), "Error message").to.equal(true);
+    expect(ContactUsPage.isEmailIsSent(), "Message has not been sent!").to.equal(true);
   });
 });

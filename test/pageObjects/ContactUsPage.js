@@ -6,10 +6,11 @@ class ContactUsPage {
     get emailAddressInput() { return $("#email"); }
     get messageInput() { return $("#message"); }
     get submitBtn() { return $('#submitMessage'); }
+    get successMessage() { return $("//p[contains(text(),'Your message has been successfully sent to our team.')]"); }
 
     selectSubject(option) {
+        this.subjectHeadingDropdown.waitForExist(10000);
         this.subjectHeadingDropdown.selectByVisibleText(option);
-        browser.pause(5000);
     };
 
     enterEmail(email) {
@@ -25,7 +26,8 @@ class ContactUsPage {
     };
 
     isEmailIsSent() {
-        return webElement.isVisible();
+        this.successMessage.waitForDisplayed(10000);
+        return this.successMessage.isDisplayed();
     }
 }
 
