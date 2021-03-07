@@ -180,8 +180,8 @@ exports.config = {
    */
   before: function (capabilities, specs) {
     //Add a custom browser command
-    browser.addCommand("customCommand", function () {
-      return "This is a Custom Command !";
+    browser.addCommand("getPageTitleCustom", function () {
+      return browser.getTitle();
     });
     browser.setWindowSize(1980, 1024);
     //

@@ -1,9 +1,9 @@
 <?xml version='1.0'?>
-<ns2:test-suite xmlns:ns2='urn:model.allure.qatools.yandex.ru' start='1615146870700' stop='1615146886890'>
+<ns2:test-suite xmlns:ns2='urn:model.allure.qatools.yandex.ru' start='1615151833132' stop='1615151851932'>
     <name>I should be able to open Contact us page</name>
     <title>I should be able to open Contact us page</title>
     <test-cases>
-        <test-case start='1615146870701' status='passed' stop='1615146886886'>
+        <test-case start='1615151833135' status='passed' stop='1615151851930'>
             <name>Should send Email to support center</name>
             <title>Should send Email to support center</title>
             <labels>

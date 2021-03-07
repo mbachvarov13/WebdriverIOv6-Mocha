@@ -3,7 +3,7 @@ const assert = require("assert");
 class Helpers {
 
     assertTitleIsAsExpected(expectedTitle) {
-        assert.strictEqual(browser.getTitle(), expectedTitle);
+        assert.strictEqual(browser.getPageTitleCustom(), expectedTitle);
     }
 }
 

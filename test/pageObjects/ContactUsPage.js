@@ -15,11 +15,11 @@ class ContactUsPage {
     };
 
     enterEmail(email) {
-        this.emailAddressInput.setValue(email);
+        this.emailAddressInput.addValue(email);
     };
 
     enterMessage(message) {
-        this.messageInput.setValue(message);
+        this.messageInput.addValue(message);
     };
 
     submitEmail() {

@@ -1,8 +1,11 @@
 import { expect } from "chai";
+import browserCapabilities from "../config/browserCapabilities";
 import { CONTACT_US_TITLE, CUSTOMER_SERVICE, EMAIL_ADDRESS, SUPPORT_MESSAGE } from "../helpers/Constants";
 import Helpers from "../helpers/Helpers";
 import ContactUsPage from "../pageObjects/ContactUsPage";
 import HomePage from "../pageObjects/HomePage";
+import dataGenerators from "../../utils/DataGenerator";
+
 const request = require("sync-request");
 
 // // Navigate to specific URL before each test
@@ -18,14 +21,9 @@ const request = require("sync-request");
 
 // describe("When I am on Home page", () => {
 //   it.only("should have the right title", () => {
-//     browser.customCommand();
-//     console.log("Test Number 1");
-//     const title = browser.getTitle();
-//     expect(title).to.equal(
-//       "WebdriverIO · Next-gen browser and mobile automation test framework for Node.js"
-//     );
+//     browser.getPageTitleCustom();
+//     console.log("Custom command should be printed here!");
 //   });
-
 //   it.skip("test 2", () => {
 //     console.log("Test Number 2");
 //   });
@@ -63,9 +61,20 @@ describe("I should be able to open Contact us page", () => {
     Helpers.assertTitleIsAsExpected(CONTACT_US_TITLE);
     ContactUsPage.selectSubject(CUSTOMER_SERVICE);
     ContactUsPage.uploadFile();
-    ContactUsPage.enterEmail(EMAIL_ADDRESS);
-    ContactUsPage.enterMessage(SUPPORT_MESSAGE);
+    ContactUsPage.enterEmail(dataGenerators.generateRandomEmailAddress());
+    ContactUsPage.enterMessage(dataGenerators.generateRandomString());
+    browser.pause(10000);
     ContactUsPage.submitEmail();
     expect(ContactUsPage.isEmailIsSent(), "Message has not been sent!").to.equal(true);
   });
 });
+
+// describe("When I am on Home page", () => {
+//   it.only("I should be able to execute JS code", () => {
+//     browser.pause(3000);
+//     browser.execute(() => {
+//       return document.body.style.fontSize = "100px";
+//     });
+//     browser.pause(5000);
+//   });
+// });
