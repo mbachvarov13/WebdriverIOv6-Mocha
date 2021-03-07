@@ -1,9 +1,9 @@
 import { expect } from "chai";
-import { CUSTOMER_SERVICE, EMAIL_ADDRESS, SUPPORT_MESSAGE } from "../helpers/Constants";
+import { CONTACT_US_TITLE, CUSTOMER_SERVICE, EMAIL_ADDRESS, SUPPORT_MESSAGE } from "../helpers/Constants";
+import Helpers from "../helpers/Helpers";
 import ContactUsPage from "../pageObjects/ContactUsPage";
 import HomePage from "../pageObjects/HomePage";
 const request = require("sync-request");
-const assert = require("assert");
 
 // // Navigate to specific URL before each test
 // beforeEach(() => {
@@ -60,7 +60,9 @@ const assert = require("assert");
 describe("I should be able to open Contact us page", () => {
   it("Should send Email to support center", () => {
     HomePage.navigateToContactUsPage();
+    Helpers.assertTitleIsAsExpected(CONTACT_US_TITLE);
     ContactUsPage.selectSubject(CUSTOMER_SERVICE);
+    ContactUsPage.uploadFile();
     ContactUsPage.enterEmail(EMAIL_ADDRESS);
     ContactUsPage.enterMessage(SUPPORT_MESSAGE);
     ContactUsPage.submitEmail();

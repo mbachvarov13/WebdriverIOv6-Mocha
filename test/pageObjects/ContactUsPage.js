@@ -1,4 +1,4 @@
-import browserCapabilities from "../config/browserCapabilities";
+import { FILE_UPLOAD_PATH } from "../helpers/Constants";
 
 class ContactUsPage {
 
@@ -7,6 +7,7 @@ class ContactUsPage {
     get messageInput() { return $("#message"); }
     get submitBtn() { return $('#submitMessage'); }
     get successMessage() { return $("//p[contains(text(),'Your message has been successfully sent to our team.')]"); }
+    get uploadFileInput() { return $("#fileUpload"); }
 
     selectSubject(option) {
         this.subjectHeadingDropdown.waitForExist(10000);
@@ -28,6 +29,10 @@ class ContactUsPage {
     isEmailIsSent() {
         this.successMessage.waitForDisplayed(10000);
         return this.successMessage.isDisplayed();
+    }
+
+    uploadFile() {
+        this.uploadFileInput.setValue(browser.uploadFile(FILE_UPLOAD_PATH));
     }
 }
 

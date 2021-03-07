@@ -1,6 +1,9 @@
+const assert = require("assert");
+
 class Helpers {
-    clickOnElement(webElement) {
-        webElement.click();
+
+    assertTitleIsAsExpected(expectedTitle) {
+        assert.strictEqual(browser.getTitle(), expectedTitle);
     }
 }
 

@@ -1,7 +1,8 @@
 const fs = require("fs");
 //For debug mode use: set DEBUG=true&&npm test
 //and add browser.debug()
-let DEFAULT_TIMEOUT = process.env.DEBUG ? 900000 : 10000;
+const DEFAULT_TIMEOUT = process.env.DEBUG ? 900000 : 10000;
+let URL_UNDER_TEST = process.env.URL_UNDER_TEST ? "http://google.com" : "http://automationpractice.com/index.php";
 console.log("Default timeout is", DEFAULT_TIMEOUT);
 
 exports.config = {
@@ -81,7 +82,7 @@ exports.config = {
   // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
   // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
   // gets prepended directly.
-  baseUrl: "http://automationpractice.com/index.php",
+  baseUrl: URL_UNDER_TEST,
   //
   // Default timeout for all waitFor* commands.
   waitforTimeout: DEFAULT_TIMEOUT,
@@ -98,6 +99,7 @@ exports.config = {
   // your test setup with almost no effort. Unlike plugins, they don't add new
   // commands. Instead, they hook themselves up into the test process.
   services: ["chromedriver"],
+  // services: ["selenium-standalone"],
 
   // Framework you want to run your specs with.
   // The following are supported: Mocha, Jasmine, and Cucumber
